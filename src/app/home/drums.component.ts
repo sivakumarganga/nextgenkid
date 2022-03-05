@@ -7,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class DrumsComponent implements OnInit {
     private handleKeyBind: { () };
-    private audioFiles: Array<any> = [
+    public audioFiles: Array<any> = [
         { key: 65, keyChar: "A", src: "/./assets/sounds/clap.wav", sound: "clap" },
         { key: 83, keyChar: "S", src: "/./assets/sounds/hihat.wav", sound: "hihat" },
         { key: 68, keyChar: "D", src: "/./assets/sounds/kick.wav", sound: "kick" },
@@ -18,7 +18,7 @@ export class DrumsComponent implements OnInit {
         { key: 75, keyChar: "K", src: "/./assets/sounds/tom.wav", sound: "tom" },
         { key: 76, keyChar: "L", src: "/./assets/sounds/tink.wav", sound: "tink" }
     ];
-    private playingTitle = "Press A Key To Play The Drums";
+    public playingTitle = "Press A Key To Play The Drums";
     constructor() {
         this.handleKeyBind = this.handleKey.bind(this);
         document.addEventListener('keyup', this.handleKeyBind, false);
@@ -42,7 +42,7 @@ export class DrumsComponent implements OnInit {
             });
         }
     }
-    private amIPlaying(keyCode) {
+    public amIPlaying(keyCode) {
         return this.playingList[keyCode];
     }
 

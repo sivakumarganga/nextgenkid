@@ -1,4 +1,4 @@
-<div class="drums-container" (keydown)="onKeyDownEvent($event)" (keyup)="onKeyDownEvent($event)">
+<div class="drums-container" >
   <h1 class="hint-header">{{playingTitle}}</h1>
   <div class="keys">
     <div *ngFor="let af of audioFiles" class="key" [ngClass]="{'playing':amIPlaying(af.key)}">

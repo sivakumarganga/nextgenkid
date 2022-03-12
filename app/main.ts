@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, protocol } from 'electron';
+import { app, BrowserWindow, screen, protocol, globalShortcut } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -47,6 +47,13 @@ function createWindow(): BrowserWindow {
     y: 0,
     width: size.width,
     height: size.height,
+    autoHideMenuBar:true,
+    alwaysOnTop:(serve) ? false : true,
+    closable:(serve) ? true : false,
+    fullscreen:true,
+    modal:true,
+    focusable:true,
+    useContentSize:false,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -93,7 +100,15 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  // app.on('ready', () => {    
+  //   setTimeout(createWindow, 400)
+  // });
+  app.whenReady().then(() => {
+    globalShortcut.register('CommandOrControl+Alt+Q', () => {
+      app.quit();      
+    console.log("Closing the application");
+    })
+  }).then(createWindow)
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {

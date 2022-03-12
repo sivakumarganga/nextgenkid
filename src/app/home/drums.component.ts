@@ -26,7 +26,9 @@ export class DrumsComponent implements OnInit {
     public playingList: any = {};
 
     ngOnInit(): void {
-
+       var msg= new SpeechSynthesisUtterance();
+       msg.text="Well Come!, Mr. Ganga Aashrith Siddam";
+       window.speechSynthesis.speak(msg);
     }
     private playSound(e: any) {
         var audioFile = this.audioFiles.find(_ => _.key === e.keyCode);

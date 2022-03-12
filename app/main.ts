@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, protocol } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
@@ -11,6 +11,35 @@ function createWindow(): BrowserWindow {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
+
+  const PROTOCOL = 'file';
+  protocol.interceptFileProtocol(PROTOCOL, (request, callback) => {
+    console.log(`request: ${request.url}`);
+    let url = request.url.substr(PROTOCOL.length + 4);
+    console.log(`after trim request: ${url}`);
+    fs.access(url, (err) => {
+      console.log(err);
+      if (err) {
+        let relativePath=url.substr(2);
+         // console.log(`File does not exist ${__dirname} url:${relativePath}}`);
+          url = path.join(__dirname, relativePath);
+        } 
+        console.log(`Final Check Url:${url}}`);
+        if (!fs.existsSync(url)) {
+          // Path when running electron executable
+           let pathIndex = './index.html';
+           if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
+             // Path when running electron in local folder
+             pathIndex = '../dist/index.html';
+           }
+           url=path.join(__dirname, pathIndex);
+      }
+        url = path.normalize(url); 
+        //console.log(url);
+      
+        callback({path: url});
+    });
+});
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -40,7 +69,7 @@ function createWindow(): BrowserWindow {
        // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
-
+    
     win.loadURL(url.format({
       pathname: path.join(__dirname, pathIndex),
       protocol: 'file:',

@@ -8,15 +8,15 @@ import { Component, OnInit } from "@angular/core";
 export class DrumsComponent implements OnInit {
     private handleKeyBind: { () };
     public audioFiles: Array<any> = [
-        { key: 65, keyChar: "A", src: "/./assets/sounds/clap.wav", sound: "clap" },
-        { key: 83, keyChar: "S", src: "/./assets/sounds/hihat.wav", sound: "hihat" },
-        { key: 68, keyChar: "D", src: "/./assets/sounds/kick.wav", sound: "kick" },
-        { key: 70, keyChar: "F", src: "/./assets/sounds/openhat.wav", sound: "openhat" },
-        { key: 71, keyChar: "G", src: "/./assets/sounds/boom.wav", sound: "boom" },
-        { key: 72, keyChar: "H", src: "/./assets/sounds/ride.wav", sound: "ride" },
-        { key: 74, keyChar: "J", src: "/./assets/sounds/snare.wav", sound: "snare" },
-        { key: 75, keyChar: "K", src: "/./assets/sounds/tom.wav", sound: "tom" },
-        { key: 76, keyChar: "L", src: "/./assets/sounds/tink.wav", sound: "tink" }
+        { key: 65, keyChar: "A", src: "/assets/sounds/clap.wav", sound: "clap" },
+        { key: 83, keyChar: "S", src: "/assets/sounds/hihat.wav", sound: "hihat" },
+        { key: 68, keyChar: "D", src: "/assets/sounds/kick.wav", sound: "kick" },
+        { key: 70, keyChar: "F", src: "/assets/sounds/openhat.wav", sound: "openhat" },
+        { key: 71, keyChar: "G", src: "/assets/sounds/boom.wav", sound: "boom" },
+        { key: 72, keyChar: "H", src: "/assets/sounds/ride.wav", sound: "ride" },
+        { key: 74, keyChar: "J", src: "/assets/sounds/snare.wav", sound: "snare" },
+        { key: 75, keyChar: "K", src: "/assets/sounds/tom.wav", sound: "tom" },
+        { key: 76, keyChar: "L", src: "/assets/sounds/tink.wav", sound: "tink" }
     ];
     public playingTitle = "Press A Key To Play The Drums";
     constructor() {

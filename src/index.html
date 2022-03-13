@@ -1,14 +1,32 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Angular Electron</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>Next Generation Kidoo</title>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <style>
+        .loading-control {
+            background: black;
+            height: 100vmax;
+        }
+        
+        .loading-control img {
+            align-content: center;
+            margin: auto;
+        }
+    </style>
 </head>
+
 <body>
-  <app-root>Loading...</app-root>
+    <app-root>
+        <center class="loading-control">
+            <img src="/assets/loading.gif" />
+        </center>
+    </app-root>
 </body>
+
 </html>

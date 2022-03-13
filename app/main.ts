@@ -20,26 +20,26 @@ function createWindow(): BrowserWindow {
     fs.access(url, (err) => {
       console.log(err);
       if (err) {
-        let relativePath=url.substr(2);
-         // console.log(`File does not exist ${__dirname} url:${relativePath}}`);
-          url = path.join(__dirname, relativePath);
-        } 
-        console.log(`Final Check Url:${url}}`);
-        if (!fs.existsSync(url)) {
-          // Path when running electron executable
-           let pathIndex = './index.html';
-           if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-             // Path when running electron in local folder
-             pathIndex = '../dist/index.html';
-           }
-           url=path.join(__dirname, pathIndex);
+        let relativePath = url.substr(2);
+        // console.log(`File does not exist ${__dirname} url:${relativePath}}`);
+        url = path.join(__dirname, relativePath);
       }
-        url = path.normalize(url); 
-        //console.log(url);
-      
-        callback({path: url});
+      console.log(`Final Check Url:${url}}`);
+      if (!fs.existsSync(url)) {
+        // Path when running electron executable
+        let pathIndex = './index.html';
+        if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
+          // Path when running electron in local folder
+          pathIndex = '../dist/index.html';
+        }
+        url = path.join(__dirname, pathIndex);
+      }
+      url = path.normalize(url);
+      //console.log(url);
+
+      callback({ path: url });
     });
-});
+  });
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -47,13 +47,13 @@ function createWindow(): BrowserWindow {
     y: 0,
     width: size.width,
     height: size.height,
-    autoHideMenuBar:true,
-    alwaysOnTop:(serve) ? false : true,
-    closable:(serve) ? true : false,
-    fullscreen:true,
-    modal:true,
-    focusable:true,
-    useContentSize:false,
+    autoHideMenuBar: true,
+    alwaysOnTop: (serve) ? false : true,
+    closable: (serve) ? true : false,
+    fullscreen: true,
+    modal: true,
+    focusable: true,
+    useContentSize: false,
     webPreferences: {
       nodeIntegration: true,
       allowRunningInsecureContent: (serve) ? true : false,
@@ -73,10 +73,10 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
-    
+
     win.loadURL(url.format({
       pathname: path.join(__dirname, pathIndex),
       protocol: 'file:',
@@ -105,9 +105,13 @@ try {
   // });
   app.whenReady().then(() => {
     globalShortcut.register('CommandOrControl+Alt+Q', () => {
-      app.quit();      
-    console.log("Closing the application");
-    })
+      app.quit();
+      console.log("Closing the application");
+    });
+    globalShortcut.register('CommandOrControl+B', () => {
+      win.webContents.goBack();
+      console.log("Closing the application");
+    });
   }).then(createWindow)
 
   // Quit when all windows are closed.

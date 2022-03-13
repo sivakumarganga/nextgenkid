@@ -12,10 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 // NG Translate
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DesktopModule } from './desktop/desktop.module';
+import { AppsModule } from './apps/apps.module';
 
 import { HomeModule } from './home/home.module';
 import { DetailModule } from './detail/detail.module';
-import { DesktopModule } from './desktop/desktop.module';
+
 
 import { AppComponent } from './app.component';
 
@@ -32,6 +34,7 @@ const httpLoaderFactory = (http: HttpClient): TranslateHttpLoader =>  new Transl
     CoreModule,
     SharedModule,
     DesktopModule,
+    AppsModule,
     HomeModule,
     DetailModule,
     AppRoutingModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SpeechService } from '../core/services';
 
 @Component({
   selector: 'app-desktop',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DesktopComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private speechService:SpeechService) { }
 
   ngOnInit(): void {
+    this.speechService.speak("Hello!,  Smart Kidoo!")
   }
 
 }

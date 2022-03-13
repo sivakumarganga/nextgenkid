@@ -6,9 +6,13 @@ import { Injectable } from '@angular/core';
 export class SpeechService {
 
   constructor() { }
-  public speak=(sentence:string)=>{
-    var msg= new SpeechSynthesisUtterance();
-    msg.text=sentence;
+  public speak = (sentence: string) => {
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = sentence;
     window.speechSynthesis.speak(msg);
+
+  }
+  public stop = () => {
+    window.speechSynthesis.cancel();
   }
 }

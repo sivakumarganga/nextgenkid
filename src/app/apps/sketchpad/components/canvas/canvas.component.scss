@@ -1,0 +1,22 @@
+.canvasContainer {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    .canvasButtons {
+        margin-left: 20px;
+        button {
+            height: 30px;
+            display: block;
+            margin-top: 10px;
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    .canvas {
+        height: 500px;
+        width: 500px;
+        display: flex;
+        border: 1px gray solid;
+    }
+}

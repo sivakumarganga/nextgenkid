@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AlphabetAppComponent } from "./alphabet-app/alphabet-app.component";
 import { NumbsAppComponent } from "./numbs-app/numbs-app.component";
 import { DrumsAppComponent } from "./drums-app/drums-app.component";
+import { SketchpadComponent } from "./sketchpad/sketchpad.component";
+import { SmashComponent } from "./smash/smash.component";
 const routes:Routes=[
     {
         path:"apps",
@@ -17,6 +19,14 @@ const routes:Routes=[
             },{
                 path:'drums',
                 component:DrumsAppComponent
+            },
+            {
+                path:'sketchpad',
+                component:SketchpadComponent
+            },
+            {
+                path:'smash',
+                component:SmashComponent
             }
         ]
 

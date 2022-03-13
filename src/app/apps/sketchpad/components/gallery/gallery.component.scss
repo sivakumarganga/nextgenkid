@@ -1,0 +1,15 @@
+.gallery {
+
+  h3 {
+    width: 100vw;
+    text-align: center;
+  }
+
+  .images {
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 1100px;
+  }
+}

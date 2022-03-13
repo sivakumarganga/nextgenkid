@@ -1,0 +1,18 @@
+li {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    .active {
+        box-shadow: 0 0 15px 9px rgba(0, 0, 0, 0.75);
+    }
+}
+
+.penPanel {
+    margin-left: 40px;
+}
+
+.color-control-panel {
+    left: 0;
+    position: absolute;
+}

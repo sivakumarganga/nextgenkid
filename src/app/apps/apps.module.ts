@@ -5,12 +5,22 @@ import { AppsRoutingModule } from './apps-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NumbsAppComponent } from './numbs-app/numbs-app.component';
 import { DrumsAppComponent } from './drums-app/drums-app.component';
+import { SketchpadComponent } from './sketchpad/sketchpad.component';
+import { ColorPanelComponent } from './sketchpad/components/color-panel';
+import { CanvasComponent } from './sketchpad/components/canvas';
+import { GalleryComponent } from './sketchpad/components/gallery';
+import { SmashComponent } from './smash/smash.component';
 
 @NgModule({
   declarations: [
     AlphabetAppComponent,
     NumbsAppComponent,
-    DrumsAppComponent
+    DrumsAppComponent,
+    SketchpadComponent,
+    ColorPanelComponent,
+    CanvasComponent,
+    GalleryComponent,
+    SmashComponent
   ],
   imports: [
     CommonModule, SharedModule, AppsRoutingModule

@@ -1,0 +1,11 @@
+<div class="canvasContainer" #canvasContainer>
+    <app-color-panel (currentColor)="changeCurrent($event)" (currentRange)="changeRange($event)"></app-color-panel>
+    <div class="canvas">
+        <canvas id="canvas1" height="500px" #Canvas on-mousedown="enableDrawning($event)" on-mouseup="disableDrawning()" on-mousemove="drawLines($event)"></canvas>
+    </div>
+    <div class="canvasButtons">
+        <button md-raised-button color="warn" (click)="clearCanvas()">Clear</button>
+        <!-- <button md-raised-button color="primary" (click)="saveImage()">Add to Gallery</button> -->
+    </div>
+</div>
+<app-gallery #images></app-gallery>

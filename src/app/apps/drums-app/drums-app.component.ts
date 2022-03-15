@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-drums-app',
   templateUrl: './drums-app.component.html',
   styleUrls: ['./drums-app.component.scss']
 })
-export class DrumsAppComponent implements OnInit {
+export class DrumsAppComponent implements OnInit, OnDestroy {
 
   private handleKeyBind: { () };
     public audioFiles: Array<any> = [
@@ -24,6 +24,7 @@ export class DrumsAppComponent implements OnInit {
         this.handleKeyBind = this.handleKey.bind(this);
         document.addEventListener('keyup', this.handleKeyBind, false);
     }
+   
     public playingList: any = {};
 
     ngOnInit(): void {
@@ -53,8 +54,8 @@ export class DrumsAppComponent implements OnInit {
         this.playSound(event);
     }
 
-    onDestroy() {
-        document.removeEventListener('keydown', this.handleKeyBind, false);
+    ngOnDestroy(): void {
+        document.removeEventListener('keyup', this.handleKeyBind, false);
     }
 
 }

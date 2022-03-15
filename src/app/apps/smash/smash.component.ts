@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SpeechService } from '../../core/services';
 
 @Component({
@@ -6,7 +6,7 @@ import { SpeechService } from '../../core/services';
   templateUrl: './smash.component.html',
   styleUrls: ['./smash.component.scss']
 })
-export class SmashComponent implements OnInit {
+export class SmashComponent implements OnInit, OnDestroy {
   private handleKeyBind: { () };
   @ViewChild('canvas', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
@@ -51,14 +51,14 @@ export class SmashComponent implements OnInit {
     this.ctx.font = `bold ${this.fontSize}px Verdana`;
     var x = Math.floor((Math.random() * this.canvas.nativeElement.width) + 1);
     var y = Math.floor((Math.random() * this.canvas.nativeElement.height) + 1);
-    if(x<this.fontSize){
-      x=this.fontSize;
+    if (x < this.fontSize) {
+      x = this.fontSize;
     }
-    if(y<this.fontSize){
-     y=this.fontSize;
+    if (y < this.fontSize) {
+      y = this.fontSize;
     }
     let character = String.fromCharCode(keyCode);
-    console.log(x,y);
+    console.log(x, y);
     this.ctx.fillStyle = this.randomGradient(12);;
     this.ctx.fillText(character, x, y);
     this.speechService.speak(character);
@@ -86,5 +86,8 @@ export class SmashComponent implements OnInit {
         break;
     }
     this.ctx.clearRect(rect.x, rect.y, rect.width, rect.height);
+  }
+  ngOnDestroy(): void {
+    document.removeEventListener('keyup', this.handleKeyBind, false);
   }
 }

@@ -180,8 +180,7 @@ function init(){
     return (a.force-b.force);
   }
   
-  public dropBomb(evt, obj){
-    obj=obj||this.outputCanvas.nativeElement;
+  public dropBomb(evt){
     var posx = 0;
     var posy = 0;
     var e = evt || window.event;
@@ -192,8 +191,8 @@ function init(){
       posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
       posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
-    var canvasX = posx-obj.offsetLeft;
-    var canvasY = posy-obj.offsetTop;
+    var canvasX = posx-this.outputCanvas.nativeElement.offsetLeft;
+    var canvasY = posy-this.outputCanvas.nativeElement.offsetTop;
     this.explode(canvasX, canvasY);
     if(!this.speechService.isSpeaking()){
       this.speechService.speak("Well done!");

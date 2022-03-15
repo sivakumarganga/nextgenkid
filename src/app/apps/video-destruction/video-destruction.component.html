@@ -6,7 +6,9 @@
     <canvas #canvas id="sourcecopy" width="640" height="360"></canvas>
 </div>
 <div>
-    <center>
-        <div style="z-index:1;position:relative;text-align:center;font-size:16px;font-weight:bold;width:1000px;top:60px;">Click video to blow it up!</div>
-        <canvas #outputCanvas id="output" width="1000" height="600" (click)="dropBomb($event)" style="border: 0 none"></canvas></center>
+    <div style="text-align: center;">
+        <div style="z-index:1;position:relative;text-align:center;font-size:16px;font-weight:bold;width:1000px;top:60px;">
+            Click video to blow it up!</div>
+        <canvas #outputCanvas id="output" width="1000" height="600" (click)="dropBomb($event)" style="border: 0 none"></canvas>
+    </div>
 </div>

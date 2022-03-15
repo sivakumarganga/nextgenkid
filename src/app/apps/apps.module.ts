@@ -10,6 +10,7 @@ import { ColorPanelComponent } from './sketchpad/components/color-panel';
 import { CanvasComponent } from './sketchpad/components/canvas';
 import { GalleryComponent } from './sketchpad/components/gallery';
 import { SmashComponent } from './smash/smash.component';
+import { VideoDestructionComponent } from './video-destruction/video-destruction.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SmashComponent } from './smash/smash.component';
     ColorPanelComponent,
     CanvasComponent,
     GalleryComponent,
-    SmashComponent
+    SmashComponent,
+    VideoDestructionComponent
   ],
   imports: [
     CommonModule, SharedModule, AppsRoutingModule

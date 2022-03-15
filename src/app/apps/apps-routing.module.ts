@@ -6,6 +6,7 @@ import { NumbsAppComponent } from "./numbs-app/numbs-app.component";
 import { DrumsAppComponent } from "./drums-app/drums-app.component";
 import { SketchpadComponent } from "./sketchpad/sketchpad.component";
 import { SmashComponent } from "./smash/smash.component";
+import { VideoDestructionComponent } from "./video-destruction/video-destruction.component";
 const routes:Routes=[
     {
         path:"apps",
@@ -27,6 +28,10 @@ const routes:Routes=[
             {
                 path:'smash',
                 component:SmashComponent
+            },
+            {
+                path:'vd',
+                component:VideoDestructionComponent
             }
         ]
 

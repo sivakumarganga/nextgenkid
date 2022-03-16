@@ -61,7 +61,9 @@ export class SmashComponent implements OnInit, OnDestroy {
     console.log(x, y);
     this.ctx.fillStyle = this.randomGradient(12);;
     this.ctx.fillText(character, x, y);
-    this.speechService.speak(character);
+    if(!this.speechService.isSpeaking()){
+      this.speechService.speak(character);
+    }
     setTimeout(() => {
       this.clear(character, x, y);
     }, 3000);
@@ -89,5 +91,6 @@ export class SmashComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     document.removeEventListener('keyup', this.handleKeyBind, false);
+    this.speechService.stop();
   }
 }

@@ -1,1 +1,1 @@
-<p>numbs-app works!</p>
+<span *ngFor="let e of elements" class="element-style element-rotation" [style.left]="e.XValue" [style.top]="e.YValue" [style.fontSize.em]="e.FontSize">{{e.Shape}}</span>

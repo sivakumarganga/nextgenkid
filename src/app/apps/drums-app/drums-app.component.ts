@@ -32,15 +32,16 @@ export class DrumsAppComponent implements OnInit, OnDestroy {
       //  msg.text="Well Come!, Mr. Ganga Aashrith Siddam";
       //  window.speechSynthesis.speak(msg);
     }
-    private playSound(e: any) {
-        var audioFile = this.audioFiles.find(_ => _.key === e.keyCode);
+  
+    public playSound(keyCode) {
+        var audioFile = this.audioFiles.find(_ => _.key === keyCode);
         if (audioFile) {
-            this.playingList[e.keyCode] = true;
+            this.playingList[keyCode] = true;
             const audio = new Audio(audioFile.src);
             this.playingTitle = audioFile.keyChar;
             audio.play().then(_ => {
                 setTimeout(() => {
-                    this.playingList[e.keyCode] = false;
+                    this.playingList[keyCode] = false;
                 }, 500);
 
             });
@@ -51,7 +52,7 @@ export class DrumsAppComponent implements OnInit, OnDestroy {
     }
 
     private handleKey(event: any) {
-        this.playSound(event);
+        this.playSound(event.keyCode);
     }
 
     ngOnDestroy(): void {

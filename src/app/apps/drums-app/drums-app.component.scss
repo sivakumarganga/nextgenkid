@@ -2,6 +2,9 @@
     font-size: 10px;
     background: url(/./assets/adrumset.jpg) bottom center;
     background-size: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .hint-header {
@@ -9,10 +12,10 @@
     height: 10rem;
     position: relative;
     padding-top: 1em;
-    top: 10rem;
-    left: 25rem;
+    top: 25%;
+    left: 25%;
     font-family: monospace;
-    font-size: 3rem;
+    font-size: 50px;
     font-weight: bold;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);

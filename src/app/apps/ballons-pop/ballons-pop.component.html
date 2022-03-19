@@ -1,0 +1,14 @@
+<div id="main-wrapper">
+    <div #playGround id="playGround" class="my-play-ground">
+        <div *ngFor="let b of balloonsArray" class="balloon green {{b.id}}" [style.bottom]="b.bottom" [style.left]="b.left" (click)="popit(b)">
+        </div>
+    </div>
+    <div id="score-label">
+        Score: <span id="score-count">{{score}}</span>
+    </div>
+    <div id="start-btn" [hidden]="!isPlayVisible" (click)="startGame()">
+        <span>Play</span>
+    </div>
+    <div id="pause-btn">
+    </div>
+</div>

@@ -1,1 +1,3 @@
-<span *ngFor="let e of elements" class="element-style element-rotation" [style.left]="e.XValue" [style.top]="e.YValue" [style.fontSize.px]="e.FontSize" [style.color]="e.Color">{{e.Shape}}</span>
+<div class="elements-container">
+    <span *ngFor="let e of elements" class="element-style element-rotation" [style.left]="e.XValue" [style.top]="e.YValue" [style.fontSize.px]="e.FontSize" [style.color]="e.Color">{{e.Shape}}</span>
+</div>

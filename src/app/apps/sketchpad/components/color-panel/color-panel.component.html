@@ -1,0 +1,15 @@
+<div class="color-control-panel">
+    <ul>
+        <li *ngFor="let color of colors; let i = index;" (click)="changeColor(color)">
+            <button md-fab [style.background-color]="color.hexValue" [ngClass]="{'active': color.current}">
+      <!-- <md-icon class="md-24"></md-icon> -->
+    </button>
+        </li>
+    </ul>
+</div>
+
+<!-- <div class="penPanel">
+  <label>Change Pen size</label>
+  <input type="range" min="1" max="20" step="1" [(ngModel)]="range" (change)="rangeChange()">
+  <p>Pen size: <strong>{{range}}</strong></p>
+</div> -->

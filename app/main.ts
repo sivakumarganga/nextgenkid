@@ -2,6 +2,7 @@ import { app, BrowserWindow, screen, protocol, globalShortcut } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as url from 'url';
+//import * as mime from 'mime-types';
 
 let win: BrowserWindow = null;
 const args = process.argv.slice(1),
@@ -14,32 +15,44 @@ function createWindow(): BrowserWindow {
 
   const PROTOCOL = 'file';
   protocol.interceptFileProtocol(PROTOCOL, (request, callback) => {
-    console.log(`request: ${request.url}`);
-    let url = request.url.substr(PROTOCOL.length + 4);
-    console.log(`after trim request: ${url}`);
-    fs.access(url, (err) => {
-      console.log(err);
-      if (err) {
-        let relativePath=url.substr(2);
-         // console.log(`File does not exist ${__dirname} url:${relativePath}}`);
-          url = path.join(__dirname, relativePath);
-        } 
-        console.log(`Final Check Url:${url}}`);
+    //console.log(`request: ${request.url}`);
+    let directoryName=__dirname;
+    //directoryName="D:\\core\\mine\\nextgenkid\\nextgenkid\\dist";
+    try{
+      let url = request.url.substr(PROTOCOL.length + 4);
+      fs.access(url, (err) => {
+        if (err) {
+          //console.log(`Error:1:${url} ${err}`);
+          let relativePath = url.substr(2);
+          // if(path.extname(relativePath)==".js"||path.extname(relativePath)==".css"){
+          //   console.log(`relativePath : ${relativePath}`);
+          //   relativePath=relativePath.replace("/apps","");
+          // }
+          // console.log(`File does not exist ${__dirname} url:${relativePath}}`);
+          url = path.join(directoryName, relativePath);
+        }
         if (!fs.existsSync(url)) {
-          // Path when running electron executable
-           let pathIndex = './index.html';
-           if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-             // Path when running electron in local folder
-             pathIndex = '../dist/index.html';
-           }
-           url=path.join(__dirname, pathIndex);
-      }
-        url = path.normalize(url); 
-        //console.log(url);
-      
-        callback({path: url});
-    });
-});
+          console.log(`Error:2:${url} ExtName:${path.extname(url)} Error:${err}`);
+          if(!path.extname(url).length){
+              // Path when running electron executable
+              let pathIndex = './index.html';
+              if (fs.existsSync(path.join(directoryName, '../dist/index.html'))) {
+                // Path when running electron in local folder
+                pathIndex = '../dist/index.html';
+              }
+              url = path.join(directoryName, pathIndex);
+          }                   
+        }
+        url = path.normalize(url);        
+        // console.log(`Final Check Url:${url}} ${mime.lookup(url)||'empty'} Ctype:${mime.contentType(url)||'empty'}`);
+        //console.log(`Final Check Url:${url}}`);
+        callback({ path: url });
+      });
+    }catch(e){
+      console.log(`request error: ${request.url}`);
+      console.log(e);
+    }
+  });
 
   // Create the browser window.
   win = new BrowserWindow({
@@ -47,16 +60,16 @@ function createWindow(): BrowserWindow {
     y: 0,
     width: size.width,
     height: size.height,
-    autoHideMenuBar:true,
-    alwaysOnTop:(serve) ? false : true,
-    closable:(serve) ? true : false,
-    fullscreen:true,
-    modal:true,
-    focusable:true,
-    useContentSize:false,
+    autoHideMenuBar: true,
+    alwaysOnTop: (serve) ? false : true,
+    closable: (serve) ? true : false,
+    fullscreen: true,
+    modal: true,
+    focusable: true,
+    useContentSize: false,
     webPreferences: {
       nodeIntegration: true,
-      allowRunningInsecureContent: (serve) ? true : false,
+      allowRunningInsecureContent:true, //(serve) ? true : false,
       contextIsolation: false,  // false if you want to run e2e test with Spectron
     },
   });
@@ -73,10 +86,10 @@ function createWindow(): BrowserWindow {
     let pathIndex = './index.html';
 
     if (fs.existsSync(path.join(__dirname, '../dist/index.html'))) {
-       // Path when running electron in local folder
+      // Path when running electron in local folder
       pathIndex = '../dist/index.html';
     }
-    
+
     win.loadURL(url.format({
       pathname: path.join(__dirname, pathIndex),
       protocol: 'file:',
@@ -105,9 +118,13 @@ try {
   // });
   app.whenReady().then(() => {
     globalShortcut.register('CommandOrControl+Alt+Q', () => {
-      app.quit();      
-    console.log("Closing the application");
-    })
+      app.quit();
+      console.log("Closing the application");
+    });
+    globalShortcut.register('CommandOrControl+B', () => {
+      win.webContents.goBack();
+      console.log("Closing the application");
+    });
   }).then(createWindow)
 
   // Quit when all windows are closed.

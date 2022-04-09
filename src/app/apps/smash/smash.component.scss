@@ -1,0 +1,36 @@
+.elements-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.element-style {
+    position: absolute;
+    font-weight: bold;
+}
+
+.element-rotation {
+    position: absolute;
+    // -webkit-animation: spin 10s linear infinite;
+    // -moz-animation: spin 10s linear initial;
+    animation: spin 10s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

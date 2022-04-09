@@ -1,0 +1,10 @@
+<div class="drums-container">
+    <h1 class="hint-header">{{playingTitle}}</h1>
+
+    <div class="keys">
+        <div *ngFor="let af of audioFiles" class="key" [ngClass]="{'playing':amIPlaying(af.key)}" (click)="playSound(af.key)">
+            <kbd>{{af.keyChar}}</kbd>
+            <span class="sound">{{af.sound}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+.dock-wrapper {
+    // background: url(/assets/desktop/main-desktop.jpg) no-repeat center center;
+    background: url(/assets/desktop/main-mac.webp) no-repeat center center;
+    background-size: cover;
+    width: 100%;
+    background-size: 100%;
+    padding: 0 !important;
+    height: 100%;
+}
+
+#dock-container {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 50px;
+    text-align: center;
+    right: 20%;
+    left: 20%;
+    width: 60%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px 10px 0 0;
+    li {
+        list-style-type: none;
+        display: inline-block;
+        position: relative;
+        margin: 1px
+    }
+    li img {
+        width: 64px;
+        height: 64px;
+        -webkit-box-reflect: below 2px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255, 255, 255, .5)));
+        -webkit-transition: all 0.3s;
+        -webkit-transform-origin: 50% 100%;
+    }
+    li:hover img {
+        -webkit-transform: scale(2);
+        margin: 0 2em;
+    }
+    li:hover+li img,
+    li.prev img {
+        -webkit-transform: scale(1.5);
+        margin: 0 1.5em;
+    }
+    li span {
+        display: none;
+        position: absolute;
+        bottom: 140px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        padding: 4px 0;
+        border-radius: 12px;
+    }
+    li:hover span {
+        display: block;
+        color: #fff;
+    }
+}
+
+// #dock-container li {
+//     list-style-type: none;
+//     display: inline-block;
+//     position: relative;
+// }

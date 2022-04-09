@@ -7,7 +7,7 @@ import { DrumsAppComponent } from "./drums-app/drums-app.component";
 import { SketchpadComponent } from "./sketchpad/sketchpad.component";
 import { SmashComponent } from "./smash/smash.component";
 import { VideoDestructionComponent } from "./video-destruction/video-destruction.component";
-import { BallonsPopComponent } from "./ballons-pop/ballons-pop.component";
+import { BalloonsPopComponent } from "./balloons-pop/ballons-pop.component";
 const routes:Routes=[
     {
         path:"apps",
@@ -36,7 +36,7 @@ const routes:Routes=[
             },
             {
                 path:'ballonspop',
-                component:BallonsPopComponent
+                component:BalloonsPopComponent
             }
         ]
 

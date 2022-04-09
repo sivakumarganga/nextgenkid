@@ -11,7 +11,7 @@ import { CanvasComponent } from './sketchpad/components/canvas';
 import { GalleryComponent } from './sketchpad/components/gallery';
 import { SmashComponent } from './smash/smash.component';
 import { VideoDestructionComponent } from './video-destruction/video-destruction.component';
-import { BallonsPopComponent } from './ballons-pop/ballons-pop.component';
+import { BalloonsPopComponent } from './balloons-pop/ballons-pop.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { BallonsPopComponent } from './ballons-pop/ballons-pop.component';
     GalleryComponent,
     SmashComponent,
     VideoDestructionComponent,
-    BallonsPopComponent
+    BalloonsPopComponent
   ],
   imports: [
     CommonModule, SharedModule, AppsRoutingModule

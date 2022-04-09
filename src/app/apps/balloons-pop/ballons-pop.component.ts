@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewRef } from '@angular/core';
-import { Balloon } from './baloon';
+import { Balloon } from './balloon';
 
 @Component({
   selector: 'app-ballons-pop',
-  templateUrl: './ballons-pop.component.html',
-  styleUrls: ['./ballons-pop.component.scss']
+  templateUrl: './balloons-pop.component.html',
+  styleUrls: ['./balloons-pop.component.scss']
 })
-export class BallonsPopComponent implements AfterViewInit {
+export class BalloonsPopComponent implements AfterViewInit {
   @ViewChild('playGround')
   playGround: ElementRef<HTMLDivElement>;
 

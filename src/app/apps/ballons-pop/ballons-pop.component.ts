@@ -8,7 +8,7 @@ import { Balloon } from './baloon';
 })
 export class BallonsPopComponent implements AfterViewInit {
   @ViewChild('playGround')
-  playGround: ElementRef;
+  playGround: ElementRef<HTMLDivElement>;
 
   isPaused = true;
   score = null;
@@ -23,8 +23,10 @@ export class BallonsPopComponent implements AfterViewInit {
   updateTime = null;
   densityStep = null;
   balloonsArray = [];
+  balloonBurstSoundEffectSrc:string="/assets/sounds/ballon-burst.wav";
+  audioBalloonSound:HTMLAudioElement;
   constructor() {
-
+    this.audioBalloonSound = new Audio(this.balloonBurstSoundEffectSrc);
   }
 
   ngAfterViewInit() {
@@ -56,14 +58,19 @@ export class BallonsPopComponent implements AfterViewInit {
 
   popit = (b: Balloon) => {
     this.score = this.score + b.points;
+    this.audioBalloonSound.play();
     b.removeFlag=true;
   }
+  public generateRandomXPos(){
+    //console.log('document width = ', Math.floor(Math.random() * 450));
+    return Math.floor(Math.random() * this.playGround.nativeElement.offsetWidth);
+  };
   updateGame() {
     this.densityStep += this.density;
     if (this.densityStep >= 1 && this.balloonsArray.length < 30) {
       for (var i = 0; i < parseInt(this.densityStep, 10); i++) {
         var tempBalloon = new Balloon(0, -53, 'green', 'normal', 150);
-        tempBalloon.positionX = tempBalloon.generateRandomXPos();
+        tempBalloon.positionX = this.generateRandomXPos();
         tempBalloon.left = tempBalloon.positionX + 'px';
         tempBalloon.bottom = (tempBalloon.positionY + 100) + 'px';
         tempBalloon.speed = tempBalloon.getRandomSpeed();
@@ -73,7 +80,11 @@ export class BallonsPopComponent implements AfterViewInit {
       this.densityStep = 0;
     }
     for (var i = 0; i < this.balloonsArray.length; i++) {
-      this.balloonsArray[i].bottom = (parseInt(this.balloonsArray[i].bottom, 10) + (3 + this.balloonsArray[i].speed)) + 'px';
+      let newBottom=(parseInt(this.balloonsArray[i].bottom, 10) + (3 + this.balloonsArray[i].speed));
+      this.balloonsArray[i].bottom = newBottom + 'px';
+      if(newBottom>(this.playGround.nativeElement.offsetHeight-55)){
+        this.balloonsArray[i].removeFlag=true;
+      }
     }
     this.balloonsArray = this.balloonsArray.filter(_ =>! _.removeFlag);
   }

@@ -5,8 +5,8 @@ body {
 #main-wrapper {
     position: relative;
     margin: 0 auto;
-    width: 480px;
-    height: 800px;
+    width: 100vw;
+    height: 100vh;
     -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
@@ -14,14 +14,16 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 480px;
-    height: 800px;
-    background: #337bc7;
+    // width: 480px;
+    // height: 800px;
+    width: 100vw;
+    height: 100vh;
+    background: #91D8F5;
     overflow: hidden;
 }
 
 .balloon.green {
-    cursor: pointer;
+    cursor: url("/assets/cursors/needle.gif"), url("/assets/cursors/needle.cur") default;
     position: absolute;
     width: 40px;
     height: 53px;
@@ -30,6 +32,7 @@ body {
 
 .balloon:hover {
     border: solid 1px red;
+    cursor: url("/assets/cursors/needle.gif"), url("/assets/cursors/needle.cur") default;
 }
 
 #score-label {
@@ -52,10 +55,9 @@ body {
     border-radius: 10px;
     text-shadow: 1px 1px 0 #A35906;
     border: 4px solid #fff;
-    cursor: pointer;
     top: 200px;
     left: 50%;
     margin-left: -40px;
-    display: nonea;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    cursor: url("/assets/cursors/needle.cur") !important;
 }

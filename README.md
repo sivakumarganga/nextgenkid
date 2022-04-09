@@ -2,7 +2,7 @@ Next Generation Kid Operating System
 =========
 
 ## Overview
-The NexGenKid is Operating system with games for small kids.  
+The NextGenKid is Operating system with games for small kids.  
 
 As babies or children smash on the keyboard, colored shapes, letters and numbers appear on the screen and are voiced to help breed familiarization.
 
